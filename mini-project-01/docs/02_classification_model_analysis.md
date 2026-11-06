@@ -11,12 +11,13 @@
 - **주 평가 지표:** F1 (구매 클래스)
 - **보조 지표:** Precision, Recall, Accuracy
 - **모델 비교에 사용한 데이터:** ___
-- **DummyClassifier — Validation Accuracy / F1:** ___ / ___
-- **LogisticRegression — Train F1 / Validation F1:** ___ / ___
-- **LogisticRegression — Validation Precision / Recall:** ___ / ___
-- **LogisticRegression의 Validation 혼동행렬:** TN ___ / FP ___ / FN ___ / TP ___
+- **DummyClassifier — Validation Accuracy / F1:** 0.845 / 0.00
+- **LogisticRegression — Train F1 / Validation F1:** 0.505 / 0.49
+- **LogisticRegression — Validation Precision / Recall:** 0.734 / 0.367
+- **LogisticRegression의 Validation 혼동행렬:** TN 1,526 / FP 38 / FN 181 / TP 105
 
 **분석:** 불균형 데이터에서 기준 모델의 Accuracy와 F1이 다르게 나타나는 이유를 작성합니다.  
+기준 모델(Dummy model)은 다수 클래스를 선택하기에, 미구매자가 다수(약 84%)인 불균형 데이터에서 정확도는 84%로 높게 나오지만, 소수인 구매자에 대한 예측에서 모두 오답이기에 Recall과 Precision가 0이 나오고, 두 지표의 조화 평균인 F1-Score 또한 0이 됨.
 ___
 
 ## 2. PyTorch MLP-A 구현 및 학습 (CP-05)
