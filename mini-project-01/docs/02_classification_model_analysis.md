@@ -10,7 +10,7 @@
 - **양성 클래스:** 구매 (`Revenue=1`)
 - **주 평가 지표:** F1 (구매 클래스)
 - **보조 지표:** Precision, Recall, Accuracy
-- **모델 비교에 사용한 데이터:** ___
+- **모델 비교에 사용한 데이터:** 검증 데이터 셋
 - **DummyClassifier — Validation Accuracy / F1:** 0.845 / 0.00
 - **LogisticRegression — Train F1 / Validation F1:** 0.505 / 0.49
 - **LogisticRegression — Validation Precision / Recall:** 0.734 / 0.367
@@ -25,11 +25,13 @@ ___
 - **신경망 구조:** 입력 → 64 → 32 → 1 (ReLU, Dropout 0.1)
 - **손실 함수 / 옵티마이저:** `BCEWithLogitsLoss` / Adam
 - **학습 조건:** 최대 25 epoch, batch size 256, learning rate 0.001
-- **Validation F1이 가장 높았던 에포크:** ___
-- **선택된 MLP-A의 Train F1 / Validation F1:** ___ / ___
-- **MLP-A Validation Precision / Recall:** ___ / ___
+- **Validation F1이 가장 높았던 에포크:** 25
+- **선택된 MLP-A의 Train F1 / Validation F1:** 0.709 / 0.633
+- **MLP-A Validation Precision / Recall:** 0.717 / 0.566
 
 **분석:** Train loss와 Train·Validation F1 그래프에서 확인한 학습 경향을 작성합니다.  
+학습 초기 Training Loss의 급감 후 완만하게 하향/상승 안정화되는 것으로 보아 모델 학습이 안정적임을 알 수 있음. 또한, Train·Valid F1 점수가 동반 상승하고 두 곡선 간의 간격이 일정하게 유지되는 것으로 보아, 모델이 과적합되지 않고 양호한 일반화 성능을 유지하며 학습됨. 다만 최종 검증의 F1 Score(0.633)으로 보아 모델의 일반화 성능의 뛰어나다고 보기엔 어려움이 있음.
+추가로, epoch의 진행에 따른 loss 감소율과, F1 Score의 상승율로 미루어보아 추가 학습으로 모델 성능의 향상은 기대하기 어려우며, 추가 학습 시 오히려 과적합 문제를 야기 할 수 있음.
 ___
 
 ## 3. 클래스 가중 손실과 MLP 비교 (CP-06)
