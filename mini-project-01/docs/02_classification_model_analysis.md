@@ -57,13 +57,16 @@ ___
 ## 4. 예측 오류 및 임계값 분석 (CP-07)
 
 - **비교한 두 신경망:** MLP-A / MLP-B
-- **기본 임계값 0.5에서 MLP-A의 FP / FN:** ___ / ___
-- **기본 임계값 0.5에서 MLP-B의 FP / FN:** ___ / ___
-- **임계값 0.3에서 Precision·Recall 및 FP·FN 변화:** ___
-- **임계값 0.7에서 Precision·Recall 및 FP·FN 변화:** ___
-- **Validation F1이 가장 높은 MLP·임계값 조합:** ___
-- **선택한 MLP의 최적 에포크 수:** ___
-- **(선택) PR 곡선 또는 추가 임계값 실험에서 확인한 점:** ___
+- **기본 임계값 0.5에서 MLP-A의 FP / FN:** 64 / 124
+- **기본 임계값 0.5에서 MLP-B의 FP / FN:** 155 / 76
+- **임계값 0.3에서 Precision·Recall 및 FP·FN 변화:** Precision 하강 / Recall 상승 / FP 상승 / FN 저하
+- **임계값 0.7에서 Precision·Recall 및 FP·FN 변화:** Precision 상승 / Recall 하강 / FP 하강 / FN 상승
+- **Validation F1이 가장 높은 MLP·임계값 조합:** MLP-B(weighted BCE), Threshold : 0.5, F1-Score : 0.645
+- **선택한 MLP의 최적 에포크 수:** 17
+- **(선택) PR 곡선 또는 추가 임계값 실험에서 확인한 점:**
+임계값이 0.3에서 0.7로 커질수록 두 모델 모두 Precision은 상승하고 Recall은 하락하는 Trade-off가 관찰됨.
+MLP-A에서는 임계값 0.3 지점에서 F1-Score가 가장 높고, 임계값이 커질 수록 Recall과 Precision의 차이가 확대되는 경향이 있음. 양성 가중치를 적용한 MLP-B는 임계값의 증가에 따라 Recall, Precision, F1-Score의 간극이 축소되었고, 0.7 구간에서 지표가 가깝게 나타남, 다만 0.5 지점에서 종합 성능인 F1-Score가 높게 평가 되어, Recall과 Precision의 균형을 고려한 종합 성능이 가장 뛰어났으며, 구매 여부 예측이 중요한 본 프로젝트에서는 F1-Score가 가장 높고 Recall 성능도 우수한 0.5 모델이 가장 우수하다고 판단함.
+
 
 **분석:** 모델과 임계값의 선택에서 Precision·Recall 및 FP·FN을 어떻게 고려했는지 작성합니다.  
 ___
