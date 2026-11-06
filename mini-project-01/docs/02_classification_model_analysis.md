@@ -37,15 +37,19 @@ ___
 ## 3. 클래스 가중 손실과 MLP 비교 (CP-06)
 
 - **MLP-B 변경 사항:** 양성 클래스 가중치(`pos_weight`)를 적용한 `BCEWithLogitsLoss`
-- **Train 데이터의 `pos_weight`(미구매 수 ÷ 구매 수):** ___
-- **MLP-B의 최적 에포크:** ___
-- **MLP-B Train F1 / Validation F1:** ___ / ___
-- **MLP-B Validation Precision / Recall:** ___ / ___
-- **MLP-A와 MLP-B의 Validation F1 차이:** ___
-- **LogisticRegression과 두 MLP의 성능 비교에서 발견한 점:** ___
-- **Train·Validation F1 차이에서 관찰한 점:** ___
+- **Train 데이터의 `pos_weight`(미구매 수 ÷ 구매 수):** 5.46
+- **MLP-B의 최적 에포크:** 17
+- **MLP-B Train F1 / Validation F1:** 0.692 / 0.645
+- **MLP-B Validation Precision / Recall:** 0.575 / 0.734
+- **MLP-A와 MLP-B의 Validation F1 차이:** MLP-A(0.633) / MLP-B(0.645)로 MLP-B가 근소한 차이(0.012)로 더 높음.
+- **LogisticRegression과 두 MLP의 성능 비교에서 발견한 점:**
+  로지스틱 회귀 대비 MLP-A는 Precision에서 유사한 성능(0.734 / 0.717)을 보이나, Recall에서 기존 0.367에서 0.566으로 향상(0.199)되었고, MLP-B는 Precision에서 기존 0.734에서 0.575로 감소하였으나, Precision 감소량(0.157)량 대비 Recall에서 기존 0.367에서 0.734로 대폭 향상(0.367)되었음
+- **Train·Validation F1 차이에서 관찰한 점:** Train F1 0.692 / Valid F1 0.645으로 학습·검증간 간극은 0.047로 매우 안정적임. 이전의 안정적인 결과를 보였던 MLP-A(0.077)와 비교해보아도 더욱 안정적이며 일반화 성능이 뛰어남.
 
-**분석:** 양성 클래스 가중치를 적용한 뒤 Precision·Recall·F1이 어떻게 달라졌는지 작성합니다.  
+**분석:** 양성 클래스 가중치를 적용한 뒤 Precision·Recall·F1이 어떻게 달라졌는지 작성합니다.
+(지표는 Valid 기준, A > B 순) Precision : 0.717 > 0.575 // Recall : 0.566 > 0.734 // F1-Score : 0.633 >> 0.645
+소수 클래스에 대한 양성 가중치를 보다 적영히야 소수 클래스 오답에 대한 패널티를 강화하여(구매자를 구매자로 예측 할 수 있도록) Recall에서 유의미한 상승(+0.168)이 나타났으나, 그에 대한 반동으로 Precision이 감소(-0.142)하였음.
+F1-Score의 경우 0.012로 소폭 증가하여 유의미 한 차이는 아니라고 판단되지만 프로젝트 목표인 구매자 예측에는 보다 적합해보임.
 ___
 
 > 전체 실험 결과는 Notebook의 `results_df`와 `results/02_model_comparison.csv`를 참고합니다.
