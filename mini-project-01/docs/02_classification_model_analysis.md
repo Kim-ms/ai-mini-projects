@@ -75,13 +75,15 @@ ___
 
 ## 5. 최종 신경망과 Test 평가 (CP-08)
 
-- **Test 확인 전에 확정한 MLP 설정 / 임계값:** ___ / ___
-- **최종 재학습 데이터(Train + Validation):** ___행
-- **최종 재학습 에포크 수 / 가중 손실 적용 여부:** ___ / ___
-- **Test Accuracy / Precision / Recall / F1:** ___ / ___ / ___ / ___
-- **Test 혼동행렬:** TN ___ / FP ___ / FN ___ / TP ___
-- **모델 번들(`02_final_classifier.joblib`)·설정 JSON 저장 및 재로딩 확인:** ___
-- **`predict_purchase()` 실행 결과:** ___
+- **Test 확인 전에 확정한 MLP 설정 / 임계값:** MLP-B (weighted BCE) / Threshold : 0.5
+- **최종 재학습 데이터(Train + Validation):** 10,480행
+- **최종 재학습 에포크 수 / 가중 손실 적용 여부:** 17 / 적용
+- **Test Accuracy / Precision / Recall / F1:** 0.858 / 0.526 / 0.843 / 0.648
+- **Test 혼동행렬:** TN 1,347 / FP 217 / FN 45 / TP 241
+- **모델 번들(`02_final_classifier.joblib`)·설정 JSON 저장 및 재로딩 확인:** 저장 전후 예측 일치: True
+- **`predict_purchase()` 실행 결과:**
+예측: {'purchase_probability': 0.0058, 'prediction': 0, 'threshold': 0.5}
+실제 Revenue: 0
 
 **해석:** 최종 Test 결과와 동일한 모델·임계값의 Validation 결과를 비교해 알게 된 점을 작성합니다.  
 ___
@@ -90,7 +92,7 @@ ___
 
 ## 6. 실험 요약
 
-- **가장 중요한 실험 결과:** ___
-- **남아 있는 모델의 한계:** ___
+- **가장 중요한 실험 결과:** 양성 클래스 가중치를 적용한 MLP-B(th=0.5)가 F1-Score 0.645, Recall 0.734로 가장 우수한 종합 분류 성능을 기록하였으며, 로지스틱 회귀 대비 구매자 탐지 성능이 크게 향상됨.
+- **남아 있는 모델의 한계:** F1-Score 0.645만으로 충분한 일반화 성능을 확보했다고 판단하기 어려우며, Precision 감소에 따른 FP 증가와 모델의 표현력 한계가 남아 있음.
 
 > **최종 MLP 설정·임계값의 선택과 근거**는 `adr.md`의 의사결정 ④에 작성합니다.
