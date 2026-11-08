@@ -12,8 +12,8 @@
 - **보조 지표:** Precision, Recall, Accuracy
 - **모델 비교에 사용한 데이터:** 검증 데이터 셋
 - **DummyClassifier — Validation Accuracy / F1:** 0.845 / 0.00
-- **LogisticRegression — Train F1 / Validation F1:** 0.505 / 0.49
-- **LogisticRegression — Validation Precision / Recall:** 0.734 / 0.367
+- **LogisticRegression — Train F1 / Validation F1:** 0.734 / 0.367
+- **LogisticRegression — Validation Precision / Recall:** 0.505 / 0.49
 - **LogisticRegression의 Validation 혼동행렬:** TN 1,526 / FP 38 / FN 181 / TP 105
 
 **분석:** 불균형 데이터에서 기준 모델의 Accuracy와 F1이 다르게 나타나는 이유를 작성합니다.  
