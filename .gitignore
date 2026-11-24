@@ -11,6 +11,10 @@ __pycache__/
 
 # 모델 학습 결과
 checkpoints/
+
+# dataset
+mini-project-02/code/cv_yolo_mini/data/
+
 # Jupyter 체크포인트
 .ipynb_checkpoints/
 
