@@ -15,6 +15,13 @@ checkpoints/
 # dataset
 mini-project-02/code/cv_yolo_mini/data/
 
+# 기타 파일
+mini-project-02/code/CV_YOLO26_MiniProject_Guide.ipynb
+mini-project-02/code/NLP_BERT_MiniProject_Guide.ipynb
+mini-project-02/code/NLP_BERT_MiniProject_Student.ipynb
+
+mini-project-02/docs/ADR_NLP.ipynb
+
 # Jupyter 체크포인트
 .ipynb_checkpoints/
 
